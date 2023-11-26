@@ -37,8 +37,8 @@ app.post('/api/transactions',async (req,res)=>{
 
    return res.json({
         success:true,
-        transaction: savedTransactions,
-        message:'transaction is create'
+        data: savedTransactions,
+        message:'transaction saved'
     });
    }
    catch(err){
@@ -47,6 +47,26 @@ app.post('/api/transactions',async (req,res)=>{
         message:err.message
     })
    }
+})
+
+app.get('/api/transactions',async(req,res)=>{
+try{
+    
+        const allTransactions = await Transaction.find();
+    
+        res.json({
+            success:true,
+            data:allTransactions,
+            message:'successfully fetch all transactions'
+        })
+
+}catch(err){
+    res.json({
+        success:false,
+        message:'Not fetch all transactions'
+    })
+
+}
 })
 
 const PORT = process.env.PORT || 5000;
