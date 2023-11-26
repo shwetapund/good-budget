@@ -2,7 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-import Transaction from "./models/Transactions.js";
+
+import {getApiHealth} from "./../server/controllers/health.js";
+import {postApiTransaction, getApiTransaction} from "./../server/controllers/transactions.js"
 
 const app = express();
 app.use(express.json());
@@ -15,59 +17,13 @@ const MongoDBConn = async ()=>{
 };
 MongoDBConn();
 
-app.get('/api/health', (req,res)=>{
-    res.json({
-        success:true,
-        message:"server is running"
-    })
-})
+app.get('/api/health', getApiHealth)
 
-app.post('/api/transactions',async (req,res)=>{
-    const {amount, type, description,category} = req.body;
+app.post('/api/transactions',postApiTransaction)
 
-    const transactions = new Transaction({
-        amount,
-        type,
-        description,
-        category
-    })
+app.get('/api/transactions',getApiTransaction)
 
-   try{
-    const savedTransactions = await transactions.save();
 
-   return res.json({
-        success:true,
-        data: savedTransactions,
-        message:'transaction saved'
-    });
-   }
-   catch(err){
-    return res.json({
-        success:false,
-        message:err.message
-    })
-   }
-})
-
-app.get('/api/transactions',async(req,res)=>{
-try{
-    
-        const allTransactions = await Transaction.find();
-    
-        res.json({
-            success:true,
-            data:allTransactions,
-            message:'successfully fetch all transactions'
-        })
-
-}catch(err){
-    res.json({
-        success:false,
-        message:'Not fetch all transactions'
-    })
-
-}
-})
 
 const PORT = process.env.PORT || 5000;
 
