@@ -18,7 +18,7 @@ const postApiTransaction = async (req,res)=>{
     res,
     success:true,
     data: savedTransactions,
-    message: 'transaction saved'
+    message: 'transaction saved',
    })
    }
    catch(err){
