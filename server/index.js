@@ -5,7 +5,7 @@ dotenv.config();
 
 import {getApiHealth} from "./../server/controllers/health.js";
 import {postApiTransaction, getApiTransaction} from "./../server/controllers/transactions.js";
-import {postApiSignup} from "./controllers/signup.js";
+import {postApiSignup, postApiLogin} from "./controllers/signup.js";
 
 const app = express();
 app.use(express.json());
@@ -25,6 +25,8 @@ app.post('/api/transactions',postApiTransaction)
 app.get('/api/transactions',getApiTransaction)
 
 app.post('/api/signups',postApiSignup)
+
+app.post('/api/logins',postApiLogin)
 
 const PORT = process.env.PORT || 5000;
 
