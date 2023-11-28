@@ -2,14 +2,14 @@ import Transaction from "./../models/Transactions.js";
 import { responder } from "./../util.js";
 
 const postApiTransaction = async (req,res)=>{
-    const {amount, type, description,category, userId} = req.body;
+    const {amount, type, description,category, user} = req.body;
 
     const transactions = new Transaction({
         amount,
         type,
         description,
         category,
-        userId
+        user
     })
 
    try{
@@ -53,4 +53,42 @@ const getApiTransaction = async(req,res)=>{
     }
     }
 
-export {postApiTransaction, getApiTransaction};
+ //   ------- get transactions by id -------
+const getApitransactionbyId = async (req,res)=>{
+    const {id} =req.params;
+
+    const showTransaction = await Transaction.findOne({_id:id})
+
+    res.json
+    ({
+        success:true,
+        data:showTransaction,
+        message:"successfully show Transactions"
+    })
+}
+
+const getApitransactionbyUserId = async (req,res)=>{
+   try{
+    const {id} = req.params;
+
+    const finduserTrans = await Transaction.find({user:id}).populate('user')
+
+    finduserTrans.forEach((singleTransaction)=>{
+        singleTransaction.user.password = undefined;
+    })
+    res.json({
+        success:true,
+        data:finduserTrans,
+        message:"fetch user transaction"
+    })
+   }
+   catch(err){
+    res.json({
+        success:false,
+        message:err.message
+    })
+   }
+}
+
+
+export {postApiTransaction, getApiTransaction, getApitransactionbyId, getApitransactionbyUserId};
