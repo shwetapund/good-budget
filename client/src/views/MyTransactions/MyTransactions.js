@@ -2,6 +2,8 @@ import react, { useEffect, useState } from 'react';
 import './MyTransactions.css';
 import axios from 'axios';
 import Navbar from './../../components/Navbar/Navbar';
+import deleteimg from "./delete.gif";
+import editicon from "./edit.gif";
 
 export default function App() {
   const [transaction, setTransaction] = useState([])
@@ -57,9 +59,9 @@ export default function App() {
       <Navbar/>
     </div>
       <div className='App'>
-        <h1>All Expenses</h1>
-        <h2>Credit: {creditSum}</h2>
-        <h2>Debit: {debitSum}</h2>
+        <h1 className='text-center'>All Expenses</h1>
+        <h4>Credit: {creditSum}</h4>
+        <h4>Debit: {debitSum}</h4>
         {
           transaction?.map((transactions, index) => {
             const { _id, amount, type, description, category, user, createdAt, updatedAt} = transactions;
@@ -71,14 +73,17 @@ export default function App() {
                 <span className={`transaction-amount ${type==='debit' ? "debit-amount" : "credit-amount"}`}>
                   {type==='debit' ? "-" : "+"}
                   {amount}</span>
-                  { type==='debit' ? 'debited' : 'credited'} on {date} at {time}
+                  { type==='debit' ? 'debited' : 'credited'} 
                   
                   <span className='transaction-category'>
                     {CATEGORY_EMOJI_MAP[category]}
                     {category}
+                    <img src={editicon} className='edit-icon'/>
                     </span>
                   <hr/>
                   {description}
+                 <span className='date-text'> On {date} at {time}</span>
+                 <img src={deleteimg} className='delete-icon'/>
                    </div>
             )
     })

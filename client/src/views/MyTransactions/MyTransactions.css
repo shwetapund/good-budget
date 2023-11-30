@@ -22,5 +22,28 @@
 .transaction-category{
     position: absolute;
     top:20px;
-    right:20px;
+    right:100px;
+}
+.date-text{
+    position: absolute;
+    bottom:10px;
+    right: 100px;
+}
+.delete-icon{
+    height: 33px;
+    position:absolute;
+    right: 20px;
+    bottom:3px;
+}
+.delete-icon:hover{
+    cursor: pointer;
+    
+}
+.edit-icon{
+    height: 33px;
+    position:absolute;
+    right: -80px;
+}
+.edit-icon:hover{
+    cursor: pointer;
 }
