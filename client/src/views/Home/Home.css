@@ -1,26 +1,5 @@
-.App{
-    margin:  20px 100px;
-}
-.transaction-card{
-    border:1px solid #ccc;
-    border-radius: 15px;
-    padding: 10px 20px;
-    margin: 20px 0;
-    box-shadow: 0 0 5px 1px #ccc;
-    position: relative;
-}
-.transaction-amount{
-    font-size: 30px;
-    font-weight: bold;
-}
-.credit-amount{
-    color: green;
-}
-.debit-amount{
-    color: red;
-}
-.transaction-category{
-    position: absolute;
-    top:20px;
-    right:20px;
+.home-img{
+height:1000px;
+width: 100%;
+
 }

@@ -22,7 +22,6 @@ export default function App() {
     "other":"🤔"
   }
 
-
   const loadTransaction = async () => {
     const getUser = JSON.parse(localStorage.getItem('user') || {});
     const storageUser = getUser._id;
@@ -48,13 +47,11 @@ export default function App() {
 
   }
  
-
   useEffect(() => {
     loadTransaction();
   }, [userId])
 
   return (
-
     <>
     <div>
       <Navbar/>
@@ -84,8 +81,7 @@ export default function App() {
                   {description}
                    </div>
             )
-
-          })
+    })
         }
       </div>
     </>
