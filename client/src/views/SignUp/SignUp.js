@@ -4,6 +4,7 @@ import Navbar from "./../../components/Navbar/Navbar";
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import showToast from 'crunchy-toast';
 
 function SignUp (){
 
@@ -24,16 +25,16 @@ function SignUp (){
             gender:gender
         })
         if(response?.data?.success){
-            alert(response?.data?.message);
+            showToast(response?.data?.message, 'success', 5000);
         }else{
-            alert(response?.data?.message);
+            showToast(response?.data?.message, 'danger', 5000);
         }
     }
     useEffect(()=>{
         const userstorageData = JSON.parse(localStorage.getItem('user') || '{}');
         
         if(userstorageData?.email){
-            alert('you are already logged in!');
+            showToast('you are already logged in!', 'danger',5000);
             window.location.href= '/';
         }
     

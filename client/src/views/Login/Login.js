@@ -4,6 +4,7 @@ import Navbar from "./../../components/Navbar/Navbar"
 import { useState } from 'react'
 import './Login.css';
 import {Link} from 'react-router-dom';
+import showToast from 'crunchy-toast';
 
 export default function Login(){
 
@@ -15,7 +16,8 @@ const login = async()=>{
         email:email,
         password:password
     })
-    alert(response?.data?.message);
+
+    showToast(response?.data?.message, 'success', 3000);
 
     if(response?.data?.success){
         localStorage.setItem('user',JSON.stringify(response?.data?.data))
@@ -26,7 +28,7 @@ useEffect(()=>{
     const userstorageData = JSON.parse(localStorage.getItem('user') || '{}');
     
     if(userstorageData?.email){
-        alert('you are already logged in!');
+    showToast('you are already logged in!', 'danger',3000);
         window.location.href= '/';
     }
 

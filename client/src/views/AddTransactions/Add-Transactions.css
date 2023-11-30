@@ -1,0 +1,27 @@
+.transaction-container{
+    width: 380px;
+    background-color: white;
+    margin: 100px auto;
+    padding: 20px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px lightgray;
+}
+.gender-type{
+    margin-left: 20px;
+}
+.select-category{
+    margin-left: 50px;
+
+}
+.cetgory-text{
+    margin-top: 20px;
+    margin-left: 18px;
+    font-size: 20px;
+}
+.type-text{
+    font-size: 20px;
+}
+.btn-addTransaction{
+    display: block;
+    margin: 40px auto;
+}
