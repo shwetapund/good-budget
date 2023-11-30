@@ -2,7 +2,7 @@ import react from 'react';
 import "./SignUp.css";
 import Navbar from "./../../components/Navbar/Navbar";
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 function SignUp (){
@@ -29,6 +29,15 @@ function SignUp (){
             alert(response?.data?.message);
         }
     }
+    useEffect(()=>{
+        const userstorageData = JSON.parse(localStorage.getItem('user') || '{}');
+        
+        if(userstorageData?.email){
+            alert('you are already logged in!');
+            window.location.href= '/';
+        }
+    
+    },[])
     return (
 
         <>

@@ -1,7 +1,7 @@
 .signup-container{
     /* height: 0px; */
     width: 350px;
-    box-shadow: 0px 0px 5px 1px lightcoral;
+    box-shadow: 0px 0px 10px 0px lightgray;
     display: block;
     margin:100px auto;
     border-radius: 10px;

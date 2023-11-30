@@ -1,10 +1,76 @@
-import react from 'react';
+import react, { useEffect } from 'react';
+import axios from 'axios';
+import Navbar from "./../../components/Navbar/Navbar"
+import { useState } from 'react'
+import './Login.css';
+import {Link} from 'react-router-dom';
 
-export default function Login()
+export default function Login(){
 
-{
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+
+const login = async()=>{
+    const response = await axios.post('/api/logins',{
+        email:email,
+        password:password
+    })
+    alert(response?.data?.message);
+
+    if(response?.data?.success){
+        localStorage.setItem('user',JSON.stringify(response?.data?.data))
+        window.location.href="/"
+    }
+}
+useEffect(()=>{
+    const userstorageData = JSON.parse(localStorage.getItem('user') || '{}');
+    
+    if(userstorageData?.email){
+        alert('you are already logged in!');
+        window.location.href= '/';
+    }
+
+},[])
+
     return(
         <>
-        <h1>Login</h1></>
+        <Navbar/>
+        <form>
+            <div className='login-container'>
+             <h1 className='text-center'>Login</h1>
+             <input 
+             type='email'
+             className='form-control-regi'
+             placeholder='enter your email'
+             value={email}
+             onChange={(e)=>{
+                setEmail(e.target.value)
+             }}
+             />
+              <input 
+             type='password'
+             className='form-control-regi'
+             placeholder='enter your Password'
+             value={password}
+             onChange={(e)=>{
+                setPassword(e.target.value)
+             }}
+             />
+
+             <button 
+             type='button'
+             className='button btn-login'
+             onClick={login}>
+            Login
+            </button>
+             <p className='text-center'>You have no account?
+                <Link to='/signup' className='link-text'> SignUp</Link>
+             </p>
+            </div>
+        </form>
+ 
+
+        </>
+        
     )
 }
