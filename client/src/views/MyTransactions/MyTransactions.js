@@ -2,6 +2,7 @@ import react, { useEffect, useState } from 'react';
 import './MyTransactions.css';
 import axios from 'axios';
 import Navbar from './../../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 import deleteimg from "./delete.gif";
 import editicon from "./edit.gif";
 
@@ -12,16 +13,16 @@ export default function App() {
   const [userId, setUserId] = useState({});
 
   const CATEGORY_EMOJI_MAP = {
-    "food":"🍔",
-    "entertainement":"📺",
-    "shopping":"🛍",
-    "rent":"🏡",
-    "travel":"✈",
-    "education":"🏫",
-    "salary":"💰",
-    "freelancing":"💻",
-    "side-hussle":"👔",
-    "other":"🤔"
+    "food": "🍔",
+    "entertainement": "📺",
+    "shopping": "🛍",
+    "rent": "🏡",
+    "travel": "✈",
+    "education": "🏫",
+    "salary": "💰",
+    "freelancing": "💻",
+    "side-hussle": "👔",
+    "other": "🤔"
   }
 
   const loadTransaction = async () => {
@@ -35,10 +36,10 @@ export default function App() {
     let totalCredit = 0;
     let totalDebit = 0;
 
-    transactionsData.forEach((transaction)=>{
-      if(transaction.type==="credit"){
+    transactionsData.forEach((transaction) => {
+      if (transaction.type === "credit") {
         totalCredit += transaction.amount;
-      }else{
+      } else {
         totalDebit += transaction.amount;
       }
     })
@@ -48,45 +49,53 @@ export default function App() {
     setTransaction(transactionsData);
 
   }
- 
+
   useEffect(() => {
     loadTransaction();
   }, [userId])
 
+  
   return (
     <>
-    <div>
-      <Navbar/>
-    </div>
+      <div>
+        <Navbar />
+      </div>
       <div className='App'>
         <h1 className='text-center'>All Expenses</h1>
         <h4>Credit: {creditSum}</h4>
         <h4>Debit: {debitSum}</h4>
         {
           transaction?.map((transactions, index) => {
-            const { _id, amount, type, description, category, user, createdAt, updatedAt} = transactions;
+            const { _id, amount, type, description, category, user, createdAt, updatedAt } = transactions;
 
             const date = new Date(createdAt).toLocaleDateString();
             const time = new Date(createdAt).toLocaleTimeString();
             return (
               <div key={index} className='transaction-card'>
-                <span className={`transaction-amount ${type==='debit' ? "debit-amount" : "credit-amount"}`}>
-                  {type==='debit' ? "-" : "+"}
+                <span className={`transaction-amount ${type === 'debit' ? "debit-amount" : "credit-amount"}`}>
+                  {type === 'debit' ? "-" : "+"}
                   {amount}</span>
-                  { type==='debit' ? 'debited' : 'credited'} 
-                  
-                  <span className='transaction-category'>
-                    {CATEGORY_EMOJI_MAP[category]}
-                    {category}
-                    <img src={editicon} className='edit-icon'/>
-                    </span>
-                  <hr/>
-                  {description}
-                 <span className='date-text'> On {date} at {time}</span>
-                 <img src={deleteimg} className='delete-icon'/>
-                   </div>
+                {type === 'debit' ? 'debited' : 'credited'}
+
+                <span className='transaction-category'>
+                  {CATEGORY_EMOJI_MAP[category]}
+                  {category}
+
+                  <Link to="/updateTransaction">
+                  <img src={editicon}
+                   className='edit-icon'
+                    
+                   /></Link>
+                   {/* onClick={updateTransaction} */}
+
+                </span>
+                <hr />
+                {description}
+                <span className='date-text'> On {date} at {time}</span>
+                <img src={deleteimg} className='delete-icon' />
+              </div>
             )
-    })
+          })
         }
       </div>
     </>

@@ -23,6 +23,7 @@ function Navbar() {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/add-transactions">Add Transaction</Link>
                             </li>
+
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
                             </li>
