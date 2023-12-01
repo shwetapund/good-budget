@@ -11,8 +11,10 @@ export default function App() {
   const [transaction, setTransaction] = useState([])
   const [creditSum, setCreditSum] = useState(0);
   const [debitSum, setDebitSum] = useState(0);
+  const [user, setUser] = useState({});
 
 
+  
   const CATEGORY_EMOJI_MAP = {
     "food": "🍔",
     "entertainement": "📺",
@@ -66,6 +68,19 @@ export default function App() {
   const updateTransaction = async(id)=>{
     window.location.href=`/updateTransaction/${id}`
   }
+
+  useEffect(()=>{
+    const userstorageData = JSON.parse(localStorage.getItem('user') || '{}');
+    
+    if(userstorageData?.email){
+      setUser(userstorageData);
+    }
+    else{
+      showToast('you are not logged in!', 'danger',1000);
+      window.location.href='/login'
+    }
+
+},[])
 
   return (
     <>

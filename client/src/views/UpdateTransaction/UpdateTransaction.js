@@ -37,6 +37,7 @@ import { useParams } from 'react-router-dom';
       if (response?.data?.data) {
         const successMessage = 'Transaction updated successfully';
         showToast(successMessage, 'success', '3000');
+        window.location.href='/my-transactions'
       }
       
       setAmount('')

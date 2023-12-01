@@ -1,9 +1,10 @@
 .signup-container{
     /* height: 0px; */
-    width: 350px;
+    width: 390px;
     box-shadow: 0px 0px 10px 0px lightgray;
+    background-color: white;
     display: block;
-    margin:100px auto;
+    margin:80px auto;
     border-radius: 10px;
     padding-top:1px;
     padding-bottom: 10px;

@@ -3,3 +3,9 @@
     background-color: #ccccff;
 
 }
+.logout{
+    cursor: pointer;
+}
+.color:hover{
+    color: white !important;
+}
