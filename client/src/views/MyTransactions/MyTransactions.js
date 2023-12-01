@@ -5,6 +5,7 @@ import Navbar from './../../components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import deleteimg from "./delete.gif";
 import editicon from "./edit.gif";
+import showToast from 'crunchy-toast';
 
 export default function App() {
   const [transaction, setTransaction] = useState([])
@@ -54,7 +55,18 @@ export default function App() {
     loadTransaction();
   }, [userId])
 
-  
+  const deleteUserTransaction = async(id)=>{
+    const response = await axios.delete(`/api/transactions/${id}`);
+
+    if(response?.data?.success){
+      showToast(response?.data?.message,'success','3000');
+      loadTransaction();
+    }
+  }
+  const updateTransaction = async()=>{
+    window.open('/updateTransaction/:id')
+  }
+
   return (
     <>
       <div>
@@ -81,18 +93,18 @@ export default function App() {
                   {CATEGORY_EMOJI_MAP[category]}
                   {category}
 
-                  <Link to="/updateTransaction">
+                 
                   <img src={editicon}
                    className='edit-icon'
-                    
-                   /></Link>
-                   {/* onClick={updateTransaction} */}
+                   onClick={updateTransaction}
+                   />
 
                 </span>
                 <hr />
                 {description}
                 <span className='date-text'> On {date} at {time}</span>
-                <img src={deleteimg} className='delete-icon' />
+
+                <img src={deleteimg} className='delete-icon' onClick={()=>{deleteUserTransaction(_id)}} />
               </div>
             )
           })
