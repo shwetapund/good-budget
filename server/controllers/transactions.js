@@ -92,7 +92,7 @@ const getApitransactionbyUserId = async (req, res) => {
 
 const updateUserTransaction = async (req, res) => {
     const { id } = req.params;
-    const { amount, type, description, category, user } = req.body;
+    const { amount, type, description, category} = req.body;
 
     await Transaction.updateOne({ _id: id }, {
         $set: {
@@ -100,12 +100,10 @@ const updateUserTransaction = async (req, res) => {
             type: type,
             description: description,
             category: category,
-            user: user
         }
     });
 
-
-    const updateTransaction = await Transaction.findOne({ _id: id });
+     const updateTransaction = await Transaction.findOne({ _id: id });
 
     res.json({
         success: true,

@@ -1,12 +1,11 @@
-import react, { useEffect, useState } from 'react';
+import react, {useEffect, useState} from 'react'
 import './UpdateTransaction.css';
 import axios from "axios";
 import Navbar from "./../../components/Navbar/Navbar";
 import showToast from 'crunchy-toast';
 import { useParams } from 'react-router-dom';
 
-
-function UpdateTransaction() {
+  function UpdateTransaction() {
     const [amount, setAmount] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
@@ -14,114 +13,127 @@ function UpdateTransaction() {
 
     const {id} = useParams();
 
-    const setField = async ()=>{
+    const fetchTrans = async ()=>{
+      const response = await axios.get(`/api/transactions/${id}`)
+      const {amount, type, description,category} = response.data.data;
 
-    const response = await axios.get(`/api/transactions/${id}`)
+      setAmount(amount)
+      setType(type)
+      setDescription(description)
+      setCategory(category)
+    }
+    useEffect(()=>{
+      fetchTrans()
+    },[])
 
-    const {id, amount, type,description,category} = response.data.data;
+    const UpdateTransaction = async()=>{
+      const response = await axios.put(`/api/transactions/${id}`,{
+        amount,
+        type,
+        description,
+        category
+      })
+     
+      if (response?.data?.data) {
+        const successMessage = 'Transaction updated successfully';
+        showToast(successMessage, 'success', '3000');
+      }
+      
+      setAmount('')
+      setCategory('')
+      setDescription('')
+      setType('')
 
-    setAmount(amount)
-    setType(type)
-    setDescription(description)
-    setCategory(category)
+   
+    }
+  
+    // <>
+    // id= {id}
+    //   </>
 
-  }
-  useEffect(()=>{
-    setField();
-  },[])
-
-  const updateTransaction = async ()=>{
-    
-    const response = await axios.put(`/api/transactions/${id}`,
-    {
-        amount,type,description,category
-    })
-    showToast(response?.data?.success, 'success', '3000')
-  }
-    
     return (
-        <>
-        <Navbar/>
-            <form>
-                <div className='transaction-container'>
-                    <h3 className='text-center mb-5'>Update Transaction</h3>
-                    {/* amount, type, description,category,user */}
-                    <div>
-                        <input 
-                        type='number'
-                        placeholder='enter Amount'
-                        className='form-control-regi'
-                        value={amount}
-                        onChange={(e)=>{
-                            setAmount(e.target.value)
-                        }}
-                        />
-                        <label className='ms-3 type-text'>Type:- </label><input 
-                        type='radio'
-                        className='gender-type'
-                        value="credit"
-                        checked={type === "credit"}
-                        onChange={(e)=>{
-                           if(e.target.checked){
-                            setType(e.target.value)
-                           }
-                        }}
-                        /> <label className='type-text'>Credit</label>
+      <>
+      <Navbar/>
+          <form>
+              <div className='transaction-container'>
+                  <h2 className='text-center mb-5'>Add Transactions</h2>
+                  {/* amount, type, description,category,user */}
+                  <div>
+                      <input 
+                      type='number'
+                      placeholder='enter Amount'
+                      className='form-control-regi'
+                      value={amount}
+                      onChange={(e)=>{
+                          setAmount(e.target.value)
+                      }}
+                      />
+                      <label className='ms-3 type-text'>Type:- </label><input 
+                      type='radio'
+                      className='gender-type'
+                      value="credit"
+                      checked={type === "credit"}
+                      onChange={(e)=>{
+                         if(e.target.checked){
+                          setType(e.target.value)
+                         }
+                      }}
+                      /> <label className='type-text'>Credit</label>
 
-                         <input 
-                        type='radio'
-                        className='gender-type'
-                        name="amounttype"
-                        value="debit"
-                        checked={type === "debit"}
-                        onChange={(e)=>{
-                            if(e.target.checked){
-                             setType(e.target.value)
-                            }
-                         }}
-                        /> <label className='type-text'>Debit</label>
+                       <input 
+                      type='radio'
+                      className='gender-type'
+                      name="amounttype"
+                      value="debit"
+                      checked={type === "debit"}
+                      onChange={(e)=>{
+                          if(e.target.checked){
+                           setType(e.target.value)
+                          }
+                       }}
+                      /> <label className='type-text'>Debit</label>
 
-                        <div className=''>
-                        <label className='cetgory-text'>Category :-</label><br/>
-                        <select
-                        className='form-control-regi'
-                        value={category}
-                        onChange={(e)=>{
-                            setCategory(e.target.value)
-                        }}>
-                            <option >select category here</option>
-                            <option value="food">Food</option>
-                            <option value="entertainement">Entertainment</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="rent">Rent</option>
-                            <option value="travel">Travel</option>
-                            <option value="education">Education</option>
-                            <option value="salary">Salary</option>
-                            <option value="freelancing">Freelancing</option>
-                            <option value="side-hussle">Side-hussle</option>
-                            <option value="other">Other</option>
-                        </select>
-                        </div>
-                  
-                        <input 
-                        type='text'
-                        placeholder='enter description'
-                        className='form-control-regi'
-                        value={description}
-                        onChange={(e)=>{
-                            setDescription(e.target.value)
-                        }}
-                        />
-                        
-                        <button
-                        type='button'
-                        className='button btn-addTransaction'
-                        onClick={updateTransaction}>Update Transaction</button>
-                    </div>
-                </div>
+                      <div className=''>
+                      <label className='cetgory-text'>Category :-</label><br/>
+                      <select
+                      className='form-control-regi'
+                      value={category}
+                      onChange={(e)=>{
+                          setCategory(e.target.value)
+                      }}>
+                          <option >select category here</option>
+                          <option value="food">Food</option>
+                          <option value="entertainement">Entertainment</option>
+                          <option value="shopping">Shopping</option>
+                          <option value="rent">Rent</option>
+                          <option value="travel">Travel</option>
+                          <option value="education">Education</option>
+                          <option value="salary">Salary</option>
+                          <option value="freelancing">Freelancing</option>
+                          <option value="side-hussle">Side-hussle</option>
+                          <option value="other">Other</option>
+                      </select>
+                      </div>
+                
+                      <input 
+                      type='text'
+                      placeholder='enter description'
+                      className='form-control-regi'
+                      value={description}
+                      onChange={(e)=>{
+                          setDescription(e.target.value)
+                      }}
+                      />
+                      
+                      <button
+                      type='button'
+                      className='button btn-addTransaction'
+                      onClick={UpdateTransaction}>Add Transaction</button>
+                  </div>
+              </div>
 
-            </form>
-        </>
-    )
+          </form>
+      </>
+  )
 }
 export default UpdateTransaction;

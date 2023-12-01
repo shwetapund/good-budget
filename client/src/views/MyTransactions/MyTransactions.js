@@ -11,7 +11,7 @@ export default function App() {
   const [transaction, setTransaction] = useState([])
   const [creditSum, setCreditSum] = useState(0);
   const [debitSum, setDebitSum] = useState(0);
-  const [userId, setUserId] = useState({});
+
 
   const CATEGORY_EMOJI_MAP = {
     "food": "🍔",
@@ -53,7 +53,7 @@ export default function App() {
 
   useEffect(() => {
     loadTransaction();
-  }, [userId])
+  }, [])
 
   const deleteUserTransaction = async(id)=>{
     const response = await axios.delete(`/api/transactions/${id}`);
@@ -63,8 +63,8 @@ export default function App() {
       loadTransaction();
     }
   }
-  const updateTransaction = async()=>{
-    window.open('/updateTransaction/:id')
+  const updateTransaction = async(id)=>{
+    window.location.href=`/updateTransaction/${id}`
   }
 
   return (
@@ -78,7 +78,7 @@ export default function App() {
         <h4>Debit: {debitSum}</h4>
         {
           transaction?.map((transactions, index) => {
-            const { _id, amount, type, description, category, user, createdAt, updatedAt } = transactions;
+            const { _id, amount, type, description, category, createdAt } = transactions;
 
             const date = new Date(createdAt).toLocaleDateString();
             const time = new Date(createdAt).toLocaleTimeString();
@@ -96,7 +96,9 @@ export default function App() {
                  
                   <img src={editicon}
                    className='edit-icon'
-                   onClick={updateTransaction}
+                   onClick={()=>{
+                    updateTransaction(_id)
+                   }}
                    />
 
                 </span>
