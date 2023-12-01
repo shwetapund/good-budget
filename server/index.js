@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
+import path from 'path';
 
 import {getApiHealth} from "./../server/controllers/health.js";
 import {postApiTransaction, getApiTransaction, getApitransactionbyId, getApitransactionbyUserId, updateUserTransaction, deleteUserTransaction} from "./../server/controllers/transactions.js";
@@ -40,6 +41,15 @@ app.delete('/api/transactions/:id',deleteUserTransaction)
 
 // Transaction.find({userId: id})
 
+const __dirname = path.resolve();
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
