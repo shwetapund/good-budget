@@ -44,7 +44,6 @@ import { useParams } from 'react-router-dom';
       setDescription('')
       setType('')
 
-   
     }
   
     // <>

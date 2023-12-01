@@ -1,9 +1,14 @@
-import react from 'react';
+import react, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
+const [user,setUser] = useState({});
 
+useEffect(()=>{
+    const userStorage = JSON.parse(localStorage.getItem('user') || '{}');
+    setUser(userStorage);
+},[])
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-create">
@@ -32,10 +37,15 @@ function Navbar() {
                             </li>
 
                         </ul>
-                        {/* <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit">Search</button>
-      </form> */}
+                        <div>
+                            Hello🖐,{user.name || "User!"}
+                            {user?.name ?
+                            (<span className='logout-img'
+                                onClick={()=>{localStorage.removeItem('user'); window.location.href='/login'}}> Logout </span>)
+                                :
+                                null}
+                        </div>
+            
                     </div>
                 </div>
             </nav>
