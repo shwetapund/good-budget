@@ -2,7 +2,7 @@ body{
     /* background-color:   #e6e6fffe!important; */
     background-color: rgba(255, 255, 255, 0.95)!important;
   }
-.home-img{
+.home-backgroung-img{
 height:400px;
 width: 600px;
 border-radius: 20px;
@@ -10,27 +10,48 @@ border-radius: 20px;
 }
 .title{
     text-align:center;
-    margin-top: 20px;
+    padding-top: 50px;
+    color:  white;
 }
 .home-text{
-    text-align:center;
+    text-align:justify;
     font-size:25px;
     width: 700px;
     padding: 50px;
-    display: block;
-    margin: 100px auto;
-    color:black;
+    color:white;
     /* box-shadow: 0 0 5px 5px #ccddff; */
-    background-color: #c4ccdcac;
+    /* background-color: #c4ccdc6f; */
     border-radius: 10px;
-    margin-top: 100px;
     font-weight: 630;
 }
+.app-information{
+margin-top: 80px;
 
-.home-page-container{
-    padding: 5px;
-    height: 900px;
-    background-image: url("https://img.freepik.com/premium-photo/woman-using-online-banking-when-checking-her-brokerage-account-tablet-compter_274689-18061.jpg?w=740");
+}
+.home-img{
+    height: 400px;
+    width: 600px;
+    border-radius:20px;
+    margin-top: 80px;
+}
+.main-container{
+    /* background-image: url("https://img.freepik.com/premium-photo/woman-using-online-banking-when-checking-her-brokerage-account-tablet-compter_274689-18061.jpg?w=740"); */
+    /* background-image: linear-gradient(rgba(129, 126, 126, 0.9), rgba(75, 75, 75, 0.8)),
+        url('https://img.freepik.com/premium-photo/woman-using-online-banking-when-checking-her-brokerage-account-tablet-compter_274689-18061.jpg?w=740');
+    height: 700px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+  
+}
+.main-home-page-container{
+    background-image: linear-gradient(rgba(129, 126, 126, 0.9), rgba(75, 75, 75, 0.8)),
+    url('https://img.freepik.com/premium-photo/woman-using-online-banking-when-checking-her-brokerage-account-tablet-compter_274689-18061.jpg?w=740');
+height: 700px;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.home-page-container{
+ padding: 5px;
+ display: flex;
+ justify-content: space-around;
 }

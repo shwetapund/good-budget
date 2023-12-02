@@ -39,7 +39,7 @@ useEffect(()=>{
         <Navbar/>
         <form>
             <div className='login-container'>
-             <h1 className='text-center'>Login</h1>
+             <h2 className='text-center'>Good Budget</h2>
              <input 
              type='email'
              className='form-control-regi'

@@ -29,7 +29,7 @@ export default function App() {
   }
 
   const loadTransaction = async () => {
-    const getUser = JSON.parse(localStorage.getItem('user') || {});
+    const getUser = JSON.parse(localStorage.getItem('user') || '{}');
     const storageUser = getUser._id;
     console.log(storageUser)
 
@@ -39,7 +39,7 @@ export default function App() {
     let totalCredit = 0;
     let totalDebit = 0;
 
-    transactionsData.forEach((transaction) => {
+    transactionsData?.forEach((transaction) => {
       if (transaction.type === "credit") {
         totalCredit += transaction.amount;
       } else {
@@ -56,7 +56,7 @@ export default function App() {
   useEffect(() => {
     loadTransaction();
   }, [])
-
+ 
   const deleteUserTransaction = async(id)=>{
     const response = await axios.delete(`/api/transactions/${id}`);
 

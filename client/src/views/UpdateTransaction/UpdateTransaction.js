@@ -53,6 +53,8 @@ import { useParams } from 'react-router-dom';
 
     return (
       <>
+
+
       <Navbar/>
           <form>
               <div className='transaction-container'>

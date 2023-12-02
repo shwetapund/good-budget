@@ -48,7 +48,7 @@ function SignUp (){
             <form>
             <div className="signup-container">
 
-                <h2 className='text-center signup-text '>SignUp</h2>
+                <h2 className='text-center signup-text '>Good Budget</h2>
                 <div>
                     <input
                         type='text'
