@@ -3,6 +3,7 @@ import './Add-Transactions.css';
 import axios from "axios";
 import Navbar from "./../../components/Navbar/Navbar";
 import showToast from 'crunchy-toast';
+import Footer from '../../components/Footer/Footer';
 
 function AddTransactions() {
     const [amount, setAmount] = useState('');
@@ -109,6 +110,7 @@ function AddTransactions() {
                 </div>
 
             </form>
+        <Footer/>
         </>
     )
 }

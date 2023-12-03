@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "./../../components/Navbar/Navbar";
 import showToast from 'crunchy-toast';
 import { useParams } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
 
   function UpdateTransaction() {
     const [amount, setAmount] = useState('');
@@ -135,6 +136,8 @@ import { useParams } from 'react-router-dom';
               </div>
 
           </form>
+
+          <Footer/>
       </>
   )
 }

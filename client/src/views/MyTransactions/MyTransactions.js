@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import deleteimg from "./delete.gif";
 import editicon from "./edit.gif";
 import showToast from 'crunchy-toast';
+import Footer from '../../components/Footer/Footer';
 
 export default function App() {
   const [transaction, setTransaction] = useState([])
@@ -127,6 +128,8 @@ export default function App() {
           })
         }
       </div>
+
+      <Footer/>
     </>
   )
 }

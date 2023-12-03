@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import showToast from 'crunchy-toast';
+import Footer from '../../components/Footer/Footer';
 
 function SignUp (){
 
@@ -126,6 +127,7 @@ function SignUp (){
                 </div>
             </div>
             </form>
+            <Footer/>
         </>
     )
 }

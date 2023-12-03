@@ -55,3 +55,19 @@ background-size: cover;
  display: flex;
  justify-content: space-around;
 }
+.money-img{
+    height: 50px;
+    display: block;
+    margin: 0px auto;
+}
+.money-card-1{
+    padding: 20px;
+    border: 1px dashed skyblue;
+    border-radius: 10px;
+    height: 150px;
+    width: 300px;
+}
+
+.feat-card{
+    text-align: center;
+}

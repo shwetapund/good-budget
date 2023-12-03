@@ -2,6 +2,7 @@ import react, { useEffect, useState } from 'react';
 import './Home.css';
 import axios from 'axios';
 import Navbar from '../../components/Navbar/Navbar';
+import Footer from './../../components/Footer/Footer';
 
 export default function Home() {
   return (
@@ -26,6 +27,14 @@ export default function Home() {
         </div>
         </div>   
         </div>
+      <div className='money-card-1'>
+        <img src="https://as1.ftcdn.net/v2/jpg/01/07/99/30/1000_F_107993006_B9sFxS0N3IU6L4AnsPwG2AcgvtBtGzMH.jpg" className='money-img'/>
+        <div><p className='feat-card'>Manage the Daily Expense</p></div>
+        <div>
+        <p>Save the Money</p>
+        </div>
+      </div>
+        <Footer/>
       </>
       )
 }

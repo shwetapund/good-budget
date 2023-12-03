@@ -5,6 +5,7 @@ import { useState } from 'react'
 import './Login.css';
 import {Link} from 'react-router-dom';
 import showToast from 'crunchy-toast';
+import Footer from '../../components/Footer/Footer';
 
 export default function Login(){
 
@@ -70,7 +71,8 @@ useEffect(()=>{
              </p>
             </div>
         </form>
- 
+             
+             <Footer/>
 
         </>
         
