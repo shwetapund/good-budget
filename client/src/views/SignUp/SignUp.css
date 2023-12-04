@@ -22,3 +22,31 @@
 .signup-text{
     margin-top:10px;
 }
+/* .form-control-registration{
+    display: block;
+    margin: 20px auto;
+    font-size: 16px;
+    padding: 5px 10px;
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  } */
+
+@media screen and (max-width:768px) {
+    .signup-container{
+        width: 270px;
+    }
+    .signup-btn{
+        width: 200px;
+        margin: 15px auto;
+    }
+    .button{
+        font-size: 17px;
+        padding: 8px 15px;
+        min-width: 70px;
+    }
+    .gender{
+        margin-left: 50px;
+        
+    }
+}

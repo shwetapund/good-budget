@@ -1,6 +1,6 @@
 
 .button{
-  background-color: 	 #6666ff;
+  background-color:  #6666ff;
   border: none;
   border-radius: 10px;
   min-width: 100px;
@@ -25,4 +25,17 @@
 .link-text{
   text-decoration: none;
   color: black;
+}
+
+@media screen and (max-width:768px) {
+  .form-control-regi{
+    display: block;
+    margin: 20px auto;
+    font-size: 16px;
+    padding: 3px 10px;
+    width: 170px;
+    position: relative;
+    bottom: 30px;
+ 
+}
 }

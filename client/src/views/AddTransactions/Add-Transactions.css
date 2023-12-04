@@ -1,4 +1,4 @@
-.transaction-container{
+.transaction-container {
     width: 380px;
     background-color: white;
     margin: 100px auto;
@@ -6,22 +6,82 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px lightgray;
 }
-.gender-type{
+
+.gender-type {
     margin-left: 20px;
 }
-.select-category{
+
+.select-category {
     margin-left: 50px;
 
 }
-.cetgory-text{
+
+.cetgory-text {
     margin-top: 20px;
     margin-left: 18px;
     font-size: 20px;
 }
-.type-text{
+
+.type-text {
     font-size: 20px;
 }
-.btn-addTransaction{
+
+.btn-addTransaction {
     display: block;
     margin: 40px auto;
+}
+
+.type-CD-text {
+    font-size: 20px;
+}
+
+@media screen and (max-width:768px) {
+    .transaction-container {
+        width: 270px;
+        height: 450px;
+        margin: 100px auto;
+        padding: 20px 50px;
+    }
+
+    .gender-type {
+        margin-left: 20px;
+        margin-right: 5px;
+        position: relative;
+        bottom: 20px;
+        right: 15px;
+    }
+
+    .cetgory-text {
+        position: relative;
+        bottom: 30px;
+        right: 15px;
+    }
+
+    .type-text {
+        font-size: 18px;
+        position: relative;
+        bottom: 20px;
+        right: 15px;
+    }
+
+    .transaction-title {
+        font-size: 23px;
+    }
+
+    .type-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .btn-addTransaction {
+        display: block;
+        margin: 23px auto;
+        position: relative;
+        bottom: 20px;
+    }
+
+    .top-input-box {
+        position: relative;
+        bottom: 20px;
+    }
 }

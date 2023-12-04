@@ -53,7 +53,7 @@ function SignUp (){
                 <div>
                     <input
                         type='text'
-                        className='form-control-regi'
+                        className='form-control-registration'
                         placeholder='enter your name'
                         value={name}
                         onChange={(e) => {
@@ -62,7 +62,7 @@ function SignUp (){
                     />
                     <input
                         type='email'
-                        className='form-control-regi'
+                        className='form-control-registration'
                         placeholder='enter your email'
                         value={email}
                         onChange={(e) => {
@@ -71,7 +71,7 @@ function SignUp (){
                     />
                     <input
                         type='password'
-                        className='form-control-regi'
+                        className='form-control-registration'
                         placeholder='enter your Password'
                         value={password}
                         onChange={(e) => {
@@ -80,7 +80,7 @@ function SignUp (){
                     />
                      <input
                         type='text'
-                        className='form-control-regi'
+                        className='form-control-registration'
                         placeholder='enter your mobile'
                         value={mobile}
                         onChange={(e) => {
@@ -89,7 +89,7 @@ function SignUp (){
                     />
                     <input
                         type='text'
-                        className='form-control-regi'
+                        className='form-control-registration'
                         placeholder='enter your address'
                         value={address}
                         onChange={(e) => {

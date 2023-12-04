@@ -90,8 +90,8 @@ export default function App() {
       </div>
       <div className='App'>
         <h1 className='text-center'>All Expenses</h1>
-        <h4>Credit: {creditSum}</h4>
-        <h4>Debit: {debitSum}</h4>
+        <h4 className='credit-text'>Credit: {creditSum}</h4>
+        <h4 >Debit: {debitSum}</h4>
         {
           transaction?.map((transactions, index) => {
             const { _id, amount, type, description, category, createdAt } = transactions;

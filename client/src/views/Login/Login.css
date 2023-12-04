@@ -11,3 +11,27 @@
     display: block;
     margin: 40px auto;
 }
+.form-control-registration{
+    display: block;
+    margin: 20px auto;
+    font-size: 16px;
+    padding: 5px 10px;
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+@media screen and (max-width:768px){
+    .login-container{
+        width: 260px;
+        height: 350px;
+    }
+ 
+    .btn-login{
+        width: 170px;
+    }
+    .form-control-registration{
+        position: relative;
+        top:5px;
+        width: 170px;
+    }
+}

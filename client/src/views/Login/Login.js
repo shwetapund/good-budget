@@ -43,7 +43,7 @@ useEffect(()=>{
              <h2 className='text-center'>Good Budget</h2>
              <input 
              type='email'
-             className='form-control-regi'
+             className='form-control-registration'
              placeholder='enter your email'
              value={email}
              onChange={(e)=>{
@@ -52,7 +52,7 @@ useEffect(()=>{
              />
               <input 
              type='password'
-             className='form-control-regi'
+             className='form-control-registration'
              placeholder='enter your Password'
              value={password}
              onChange={(e)=>{

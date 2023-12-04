@@ -46,3 +46,42 @@
 .edit-icon:hover{
     cursor: pointer;
 }
+@media screen and (max-width:768px){
+    .App{
+        margin:  20px 10px;
+    }
+    .transaction-card{
+     width: 300px;
+     height: 150px;
+    }
+    .transaction-amount{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .transaction-category{
+        position: absolute;
+        top:10px;
+        right:10px;
+    }
+    .date-text{
+        position: absolute;
+        bottom:10px;
+        right: 83px;
+    }
+    .delete-icon{
+        height: 33px;
+        position:absolute;
+        right: 20px;
+        bottom:3px;
+    }
+    
+    .edit-icon{
+        height: 30px;
+        position:absolute;
+        right: 10px;
+        top: 50px;
+    }
+    .credit-text{
+        margin-top: 30px;
+    }
+}

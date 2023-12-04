@@ -1,11 +1,12 @@
 .bg-body-create{
-    
-    background-color: #ccccff;
+ background-color: #ccccff; 
+   
 
 }
 .logout{
     cursor: pointer;
 }
+
 .color:hover{
     color: white !important;
 }
